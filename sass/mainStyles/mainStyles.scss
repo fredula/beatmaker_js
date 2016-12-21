@@ -1,0 +1,20 @@
+
+
+body{
+	background-color: $bgColour;
+	font-family: 'Raleway', sans-serif;
+}
+
+p{
+	font-size: 100px;
+}
+
+button {
+	border-style: none;
+	border-color: transparent;
+	cursor: pointer;
+}
+
+button:focus {
+	outline: none;
+}

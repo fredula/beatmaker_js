@@ -1,0 +1,176 @@
+.container{
+	display: flex;
+	-webkit-align-items: center;
+	        align-items: center;
+	min-height: 600px; 
+}
+
+.beatmaker {
+	position: relative;
+	background: $cardColour;
+	padding-top: 20px;
+	margin: 0 auto;
+	width: 600px;
+	min-height: 300px;
+}
+
+.beatmaker__row {
+	display: flex;
+	margin-right: 2em;
+	z-index: 9999;
+	margin-top: 5px;
+}
+
+.beatmaker__beat,
+.beatmaker__but {
+	-webkit-flex: 1;
+	    -ms-flex: 1;
+	        flex: 1;
+}
+
+/*.beatmaker__indicator_1 {
+    /*position: absolute;
+    height: 100%;
+    background: #ffffff;
+    width: 0;
+    left: 205px;
+    margin: 0 2px 0 2px;
+    opacity: 0.1;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+    
+    position: absolute;
+    width: 0;
+    left: 200px;
+    top: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 70px solid #ffffff;
+    margin: 0 2px 0 2px;
+    opacity: 0.1;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+}*/
+
+
+.beatmaker__indicator {
+    position: absolute;
+    width: 20px;
+    top: 0;
+    height: 100%;
+    background: #ffffff;
+    opacity: 0;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+}
+
+.indicator_1 {
+    left: 207px;
+}
+.indicator_2 {
+    left: 231px;
+}
+.indicator_3 {
+    left: 255px;
+}
+.indicator_4 {
+    left: 278px;
+}
+.indicator_5 {
+    left: 302px;
+}
+.indicator_6 {
+    left: 326px;
+}
+.indicator_7 {
+    left: 350px;
+}
+.indicator_8 {
+    left: 374px;
+}
+.indicator_9 {
+    left: 397px;
+}
+.indicator_10 {
+    left: 421px;
+}
+.indicator_11 {
+    left: 445px;
+}
+.indicator_12 {
+    left: 469px;
+}
+.indicator_13 {
+    left: 493px;
+}
+.indicator_14 {
+    left: 516px;
+}
+.indicator_15 {
+    left: 540px;
+}
+.indicator_16 {
+    left: 564px;
+}
+
+
+.beatmaker__but {
+	-webkit-box-flex: 0 !important;
+    -webkit-flex: none !important;
+    -ms-flex: none !important;
+    flex: none !important;
+    width: 25%;
+    background: #404B4C;
+    margin: 0.5em 2em;
+    text-align: center;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: #FFF;
+    border-radius: 3px;
+    @include box-shadow();
+}
+
+.beatmaker__beat {
+	width: 30px;
+	height: 20px;
+	background: #006A77;
+	border-radius: 5px;
+	color: #F1FAFA;
+	font-size: 0.5em;
+    z-index: 9999;
+	@include box-shadow();
+}
+
+.beatmaker__beat.dark--blue {
+	background: #009FB5;
+}
+
+.beatmaker__beat:active,
+.beatmaker__beat.active {
+	background: #C76473;
+	opacity: 0.6;
+}
+.beatmaker__beat.dark--blue:active,
+.beatmaker__beat.dark--blue.active {
+	background: #D4383C;
+	opacity: 0.6;
+}
+
+i.active {
+	color: #2E2D32;
+} 
+
+.beatmaker__box {
+	background: #FFF;
+}
+
+.grid--gutter {
+	margin: 10px 2px 0 2px ;
+}
