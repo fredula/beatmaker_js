@@ -5,13 +5,14 @@ var app = function(){
 	const buttons = document.querySelectorAll('.beatmaker__beat');
 	const indicator = document.querySelector('.beatmaker__indicator');
 	const playBut = document.querySelector('.beatmaker__play');
+	const bpmSelector = document.querySelector('.beatmaker__bpm');
 	let leftPos = 200;
 	let counter = 0;
 	let timer;
 	let fps = 4;
 	let now;
 	let then = Date.now();
-	let interval = 1000/fps;
+	let interval;
 	let delta;
 
 	function clickHandler(e) {
@@ -32,9 +33,9 @@ var app = function(){
 	}
 
 	function playBeat() {
-	     
 	    requestAnimationFrame(playBeat);
-	     
+	    
+	    interval = 1000/fps;
 	    now = Date.now();
 	    delta = now - then;
   
@@ -49,9 +50,7 @@ var app = function(){
 				rows.forEach(row => {
 					if(row.children[counter].classList.contains('active')) {
 						playSound(row.children[counter].getAttribute('data-key'));
-						//console.log(row.children[counter].getAttribute('data-key'));
 					}
-			 		//console.log(row.children[counter].classList.contains('active'));
 			 	})
 			 	//this takes care of the delay after the last beat is played
 			 	counter == 16 ? counter = 1 : counter++;
@@ -60,9 +59,30 @@ var app = function(){
 			}
 	    }
 	}
+
+	function setBPM(currentBPM) {
+		switch(currentBPM) {
+			case '60': 
+				fps = 4;
+			break;
+			case '120':
+				fps = 8;
+			break;
+			case '140':
+				fps = 10;
+			break;
+		}
+	}
+
+	function handleBPMChange(e) {
+		var el = e.target;
+		var currentBPM = el.options[el.selectedIndex].dataset.bpm;
+		setBPM(currentBPM);
+	}
 	
 	buttons.forEach(button => button.addEventListener('click', clickHandler));
 	playBut.addEventListener('click', playBeat);
+	bpmSelector.addEventListener('change', handleBPMChange);
 };
 
 document.addEventListener('DOMContentLoaded', function() {
