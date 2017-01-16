@@ -41,15 +41,19 @@ var app = function(){
 	let interval;
 	let delta;
 	let isPlaying = false;
+	let activeArray = [];
 	let req;
+
 
 	function clickHandler(e) {
 		if(e.target.tagName.toLowerCase() === 'button') {
 			e.target.classList.toggle('active');
 			e.target.firstChild.classList.toggle('active');
+			activeArray.push(e.target);
 		}else if(e.target.tagName.toLowerCase() === 'i') {
 			e.target.parentNode.classList.toggle('active');
 			e.target.classList.toggle('active');
+			activeArray.push(e.target.parentNode);
 		}
 	}
 
@@ -121,13 +125,26 @@ var app = function(){
 	function handlePreChange(e) {
 		var el = e.target;
 		var currentPRE = el.options[el.selectedIndex].dataset.pre;
-		if (currentPRE === Number(1)) setBPM('120');
+		if(activeArray.length > 0) {
+			activeArray.forEach(function(el) {
+				el.classList.remove('active');
+			})
+		}
+		if (Number(currentPRE) === 1){
+			setBPM('120');
+			bpmSelector.selectedIndex = 1;
+		}else{
+			setBPM('60');
+		}
 		var rows = document.querySelectorAll('.beatmaker__row');
 		var counter = 1;
 		rows.forEach(function(el) {
 			var child = el.children;
 			[].forEach.call(child, function(childEl, index) {
-				if(predefinedBeats[Number(currentPRE)][counter][index] === 1) child[index].classList.add('active');
+				if(predefinedBeats[Number(currentPRE)][counter][index] === 1){
+					child[index].classList.add('active');
+					activeArray.push(child[index]);
+				} 
 			})
 			counter++
 		})
@@ -143,9 +160,6 @@ var app = function(){
 	    	preSelector.removeAttribute('disabled');
     	}
 	}
-	// setTimeout(function() {
-	// 	window.cancelAnimationFrame(req);
-	// },5000);
 	
 	buttons.forEach(button => button.addEventListener('click', clickHandler));
 	playBut.addEventListener('click', playBeat);
